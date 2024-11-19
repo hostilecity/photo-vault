@@ -1,5 +1,10 @@
 #!/bin/bash -e
 
+# Load application secrets into environment variables
+if [ -f /run/secrets/app ]; then
+    export $(egrep -v '^#' /run/secrets/app | xargs)
+fi
+
 # Enable jemalloc for reduced memory usage and latency.
 if [ -z "${LD_PRELOAD+x}" ]; then
     LD_PRELOAD=$(find /usr/lib -name libjemalloc.so.2 -print -quit)
