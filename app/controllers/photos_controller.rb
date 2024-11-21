@@ -3,6 +3,5 @@ class PhotosController < ApplicationController
 
   # home page
   def index
-    flash.now.notice = "Welcome, #{current_user.full_name}!"
   end
 end

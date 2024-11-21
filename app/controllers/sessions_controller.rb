@@ -1,18 +1,23 @@
 class SessionsController < ApplicationController
-
+  layout 'login'
   # display login screen
   def new
   end
 
+  # log user out
+  def destroy
+    reset_session
+    redirect_to login_path, success: "Logout successful!"
+  end
+
+  # handle oauth response
   def omniauth
     user = User.from_omniauth(request.env['omniauth.auth'])
     if user.valid?
       session[:user_id] = user.id
-      flash.notice = 'Login successful'
-      redirect_to photos_path
+      redirect_to account_path, success: "Welcome, #{user.full_name}!"
     else
-      flash.alert = 'Login failed'
-      redirect_to new_sessions_path
+      redirect_to login_path, warning: 'Login failed'
     end
   end
 end

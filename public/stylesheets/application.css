@@ -1,0 +1,21 @@
+/* Custom styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2rem;
+}
+
+body {
+    margin-bottom: 2rem;
+}
+
+body:has(> div.navbar) {
+    margin-top: 5rem;
+}
+
+.navbar-brand img {
+    height: 4rem;
+    margin: -0.5rem 0;
+}

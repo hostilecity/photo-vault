@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   # Authentication
   get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
   get 'auth/:provider/callback' => 'sessions#omniauth'
 
-  # Application (TBD)
+  # Application routes
   resources :photos, only: :index
+  resource :account, only: [:show, :update]
 
-  root to: redirect('photos')
+  root to: redirect('account')
 end
