@@ -6,7 +6,7 @@ module Warden
     def authenticate!
       success! User.find(user_id)
     rescue ActiveRecord::RecordNotFound
-      fail! 'Login failed!'
+      fail! "Login failed!"
     end
 
     private

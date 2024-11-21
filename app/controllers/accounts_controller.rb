@@ -3,10 +3,8 @@ class AccountsController < ApplicationController
 
   # home page
   def show
-
   end
 
   def update
-
   end
 end
